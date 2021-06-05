@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="42248" started-at="2021-06-06T01:43:39 IST" finished-at="2021-06-06T01:44:22 IST">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="42248" started-at="2021-06-06T01:43:39 IST" finished-at="2021-06-06T01:44:22 IST">
+      <class name="testCase.ProjectsTest">
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:testCase.ProjectsTest@76707e36]" name="beforeTest" is-config="true" duration-ms="13848" started-at="2021-06-06T01:43:39 IST" finished-at="2021-06-06T01:43:53 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method status="PASS" signature="CorrectUnameCorrectPwd()[pri:0, instance:testCase.ProjectsTest@76707e36]" name="CorrectUnameCorrectPwd" duration-ms="17780" started-at="2021-06-06T01:43:53 IST" finished-at="2021-06-06T01:44:11 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CorrectUnameCorrectPwd -->
+        <test-method status="PASS" signature="projectmenucheck()[pri:1, instance:testCase.ProjectsTest@76707e36]" name="projectmenucheck" duration-ms="6149" started-at="2021-06-06T01:44:11 IST" finished-at="2021-06-06T01:44:17 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- projectmenucheck -->
+        <test-method status="PASS" signature="addproject()[pri:2, instance:testCase.ProjectsTest@76707e36]" name="addproject" duration-ms="4318" started-at="2021-06-06T01:44:17 IST" finished-at="2021-06-06T01:44:22 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addproject -->
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:testCase.ProjectsTest@76707e36]" name="afterTest" is-config="true" duration-ms="1" started-at="2021-06-06T01:44:22 IST" finished-at="2021-06-06T01:44:22 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+      </class> <!-- testCase.ProjectsTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
