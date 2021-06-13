@@ -3,12 +3,12 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testCase.LeaveTest">
+      <class name="testCase.DashboardTest">
         <methods>
-          <include name="applyLeave"/>
+          <include name="scrollDown"/>
           <include name="beforeTest"/>
         </methods>
-      </class> <!-- testCase.LeaveTest -->
+      </class> <!-- testCase.DashboardTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

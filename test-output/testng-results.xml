@@ -1,24 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" ignored="0" total="7" passed="7">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="31545" started-at="2021-06-14T00:36:35 IST" finished-at="2021-06-14T00:37:07 IST">
+  <suite name="Default suite" duration-ms="40570" started-at="2021-06-14T01:52:53 IST" finished-at="2021-06-14T01:53:34 IST">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="31545" started-at="2021-06-14T00:36:35 IST" finished-at="2021-06-14T00:37:07 IST">
+    <test name="Default test" duration-ms="40570" started-at="2021-06-14T01:52:53 IST" finished-at="2021-06-14T01:53:34 IST">
       <class name="testCase.DashboardTest">
-        <test-method status="PASS" signature="beforeTest()[pri:0, instance:testCase.DashboardTest@6b57696f]" name="beforeTest" is-config="true" duration-ms="12759" started-at="2021-06-14T00:36:35 IST" finished-at="2021-06-14T00:36:48 IST">
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:testCase.DashboardTest@6b57696f]" name="beforeTest" is-config="true" duration-ms="14298" started-at="2021-06-14T01:52:53 IST" finished-at="2021-06-14T01:53:08 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method status="PASS" signature="CorrectUnameCorrectPwd()[pri:0, instance:testCase.DashboardTest@6b57696f]" name="CorrectUnameCorrectPwd" duration-ms="15497" started-at="2021-06-14T00:36:49 IST" finished-at="2021-06-14T00:37:04 IST">
+        <test-method status="PASS" signature="CorrectUnameCorrectPwd()[pri:0, instance:testCase.DashboardTest@6b57696f]" name="CorrectUnameCorrectPwd" duration-ms="20387" started-at="2021-06-14T01:53:08 IST" finished-at="2021-06-14T01:53:28 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CorrectUnameCorrectPwd -->
-        <test-method status="PASS" signature="dashboardmenucheck()[pri:1, instance:testCase.DashboardTest@6b57696f]" name="dashboardmenucheck" duration-ms="2814" started-at="2021-06-14T00:37:04 IST" finished-at="2021-06-14T00:37:07 IST">
+        <test-method status="PASS" signature="dashboardmenucheck()[pri:1, instance:testCase.DashboardTest@6b57696f]" name="dashboardmenucheck" duration-ms="2744" started-at="2021-06-14T01:53:29 IST" finished-at="2021-06-14T01:53:31 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- dashboardmenucheck -->
+        <test-method status="PASS" signature="incomeVSExpensecheck()[pri:2, instance:testCase.DashboardTest@6b57696f]" name="incomeVSExpensecheck" duration-ms="308" started-at="2021-06-14T01:53:31 IST" finished-at="2021-06-14T01:53:32 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- incomeVSExpensecheck -->
+        <test-method status="PASS" signature="scrollDown()[pri:3, instance:testCase.DashboardTest@6b57696f]" name="scrollDown" duration-ms="2246" started-at="2021-06-14T01:53:32 IST" finished-at="2021-06-14T01:53:34 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- scrollDown -->
+        <test-method status="PASS" signature="scrollUp()[pri:4, instance:testCase.DashboardTest@6b57696f]" name="scrollUp" duration-ms="47" started-at="2021-06-14T01:53:34 IST" finished-at="2021-06-14T01:53:34 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- scrollUp -->
+        <test-method status="PASS" signature="scrollDownpixel()[pri:5, instance:testCase.DashboardTest@6b57696f]" name="scrollDownpixel" duration-ms="10" started-at="2021-06-14T01:53:34 IST" finished-at="2021-06-14T01:53:34 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- scrollDownpixel -->
+        <test-method status="PASS" signature="scrollUppixel()[pri:6, instance:testCase.DashboardTest@6b57696f]" name="scrollUppixel" duration-ms="15" started-at="2021-06-14T01:53:34 IST" finished-at="2021-06-14T01:53:34 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- scrollUppixel -->
       </class> <!-- testCase.DashboardTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
