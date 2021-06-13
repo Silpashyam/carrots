@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -12,14 +14,25 @@ import org.testng.asserts.SoftAssert;
 
 import pageObjects.LoginPage;
 import pageObjects.ProjectsPage;
+import utilities.ActionsHelper;
+import utilities.SelectHelper;
 import utilities.Utility;
+import utilities.WaitHelper;
 
 public class ProjectsTest {
 	WebDriver driver;
 	Utility utilobj;
+	WaitHelper waitobj;
 	LoginPage loginobj;
 	ProjectsPage projectsobj;
 	LoginTest logintestobj;
+	SelectHelper selectobj;
+	ActionsHelper actionsobj;
+	String Projectname = "Sampleproject1";
+
+	public String ProjectName() {
+		return Projectname;
+	}
 
 	@BeforeTest
 	public void beforeTest() throws InterruptedException {
@@ -28,13 +41,15 @@ public class ProjectsTest {
 	}
 
 	@Test
-	public void CorrectUnameCorrectPwd() throws InterruptedException {
+	public void CorrectUnamePwd() throws InterruptedException {
 		Thread.sleep(3000);
 		loginobj = new LoginPage(driver);
 		utilobj.textboxValueEnter(loginobj.username, "admin");
 		utilobj.textboxValueEnter(loginobj.password, "123456");
 		utilobj.click(loginobj.signin);
 		Thread.sleep(5000);
+		String title = driver.getTitle();
+		Assert.assertEquals(title, "Codecarrots");
 		if (driver.getTitle().equals("Codecarrots")) {
 			Assert.assertTrue(true);
 		} else {
@@ -42,38 +57,33 @@ public class ProjectsTest {
 		}
 	}
 
-	@Test(priority = 1)
-	public void projectmenucheck() throws InterruptedException {
-		Thread.sleep(3000);
+	@Test(priority = 1, enabled = true) // TESTCASE NUMBER = 11
+	public void projectmenucheck() {
 		projectsobj = new ProjectsPage(driver);
-		utilobj.click(projectsobj.Projectsmenu);
+		WebElement element = waitobj.explicitwaitforelementpresent(driver, projectsobj.Projectsmenu, 30);
+		utilobj.click(element);
 		String titlefromsite = utilobj.getText(projectsobj.Projectspagetitle);
 		String title = "Projects";
-		SoftAssert objassert = new SoftAssert();
-		objassert.assertEquals(title, titlefromsite, "project page opened is correct");
-		objassert.assertAll();
+		Assert.assertEquals(title, titlefromsite, "project page opened is correct");
 	}
 
-	@Test(priority = 2)
-	public void addproject() throws InterruptedException {
-		Thread.sleep(3000);
+	@Test(priority = 2, enabled = true) // TESTCASE NUMBER = 12
+	public void addproject() {
 		projectsobj = new ProjectsPage(driver);
-		utilobj.click(projectsobj.NewProject);
+		selectobj = new SelectHelper();
+		actionsobj = new ActionsHelper();
+		WebElement element = waitobj.explicitwaitforelementpresent(driver, projectsobj.NewProject, 30);
+		utilobj.click(element);
 		projectsobj.ProjectNo.clear();
 		utilobj.textboxValueEnter(projectsobj.ProjectNo, "project001");
-		String Projectname = "Sampleproject01";
 		utilobj.textboxValueEnter(projectsobj.ProjectName, Projectname);
-		utilobj.selectByValue(projectsobj.SelectClient, "4");
-		int indexvalue = 0;
-		Actions act = new Actions(driver);
-		act.moveToElement(projectsobj.Slider).dragAndDropBy(projectsobj.Slider, 300, 0).build().perform();
-
+		selectobj.selectByVisibleText(projectsobj.SelectClient, "Shell");
+		actionsobj.dragAndDrop(driver, projectsobj.Slider, 300, 0);
 		utilobj.click(projectsobj.StartDate);
 		String startmonth = "June 2021";
 		String day = "10";
-		Thread.sleep(2000);
 		while (true) {
-			String text = projectsobj.StartDatemonthyear.getText(); // System.out.println(text);
+			String text = utilobj.getText(projectsobj.StartDatemonthyear);
 			if (text.equals(startmonth))
 				break;
 			else
@@ -83,22 +93,21 @@ public class ProjectsTest {
 		utilobj.click(projectsobj.EndDate);
 		String endmonth = "June 2021";
 		String endday = "10";
-		Thread.sleep(2000);
 		while (true) {
-			String text = projectsobj.StartDatemonthyear.getText(); // System.out.println(text);
+			String text = utilobj.getText(projectsobj.StartDatemonthyear);
 			if (text.equals(endmonth))
 				break;
 			else
 				utilobj.click(projectsobj.StartDateprevious);
 		}
 		driver.findElement(By.xpath("/html/body/div[8]/div[1]/table/tbody/tr[3]/td[4]")).click();
-
-		utilobj.selectByIndex(projectsobj.BillingType, indexvalue);
+		int indexvalue = 0;
+		selectobj.selectByIndex(projectsobj.BillingType, indexvalue);
 		int fixedprice = 50;
 		utilobj.textboxValueIntEnter(projectsobj.FixedPrice, fixedprice);
 		int estimatehours = 20;
 		utilobj.textboxValueIntEnter(projectsobj.EstimatedHours, estimatehours);
-		utilobj.selectByVisibleText(projectsobj.Status, "In Progress");
+		selectobj.selectByVisibleText(projectsobj.Status, "In Progress");
 		utilobj.textboxValueEnter(projectsobj.DemoUrl, "http://www.demourl.com");
 		if ((projectsobj.AssignedToEveryone).isSelected()) {
 			utilobj.click(projectsobj.AssignedToCutomize);
@@ -110,16 +119,9 @@ public class ProjectsTest {
 		}
 		utilobj.textboxValueEnter(projectsobj.Description, "Project description");
 		utilobj.click(projectsobj.save);
-		String projectnamefromsite = projectsobj.projectnameaftersave.getText();
-		SoftAssert objassert = new SoftAssert();
-		objassert.assertEquals(Projectname, projectnamefromsite, "project created successfully");
-		objassert.assertAll();
-		System.out.println("project created successfully");
+		String projectnamefromsite = utilobj.getText(projectsobj.projectnameaftersave);
+		Assert.assertEquals(Projectname, projectnamefromsite, "project created successfully");
 
 	}
 
-	@AfterTest
-	public void afterTest() {
-		// driver.close();
-	}
 }

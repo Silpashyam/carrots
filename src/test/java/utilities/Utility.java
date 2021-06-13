@@ -8,7 +8,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Utility {
 	WebDriver driver;
@@ -64,19 +66,16 @@ public class Utility {
 		String text =element.getText();
 		return text;
 	}
-	public void selectByValue(WebElement element,String text)
+	public String getTitle(WebDriver driver)
 	{
-		Select obj = new Select(element);
-		obj.selectByValue(text);
+		String text =driver.getTitle();
+		return text;
 	}
-	public void selectByIndex(WebElement element,int text)
+	public String getUrl(WebDriver driver)
 	{
-		Select obj = new Select(element);
-		obj.selectByIndex(text);
-	}	
-	public void selectByVisibleText(WebElement element,String text)
-	{
-		Select obj = new Select(element);
-		obj.selectByVisibleText(text);
+		String text =driver.getCurrentUrl();
+		return text;
 	}
+	
+	
 }
