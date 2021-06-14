@@ -1,46 +1,27 @@
 package testCase;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 
 import pageObjects.LoginPage;
 import utilities.Utility;
 
 public class BaseClass  {
-	WebDriver driver;
-	Utility utilobj;
-	LoginPage loginobj;
 	
-	public void CorrectUnamePwd() throws InterruptedException
+	
+	public static WebDriver driver;
+	
+	public BaseClass(WebDriver driver)
 	{
-		Thread.sleep(3000);
-		loginobj = new LoginPage(driver);
-		utilobj.textboxValueEnter(loginobj.username,"admin");
-		utilobj.textboxValueEnter(loginobj.password,"123456");
-		utilobj.click(loginobj.signin);		
-		Thread.sleep(5000);
-		if(driver.getTitle().equals("Codecarrots"))
-		{
-			Assert.assertTrue(true);
-		}
-		else
-		{
-			Assert.assertTrue(false);
-		}
+		this.driver=driver;
 	}
-
+	public static WebDriver getDriver()
+	{
+		return driver;
+	}
+	
 }
-
-
-//  excel
-// data provider
-// screenshot
-// wait
-// action class common
-// gettitle, get url coomon method
-// scroll down
-// window handles
-// 30 testcases
-// parameter testng
-// parallel testng
-// dependency test

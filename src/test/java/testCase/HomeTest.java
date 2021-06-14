@@ -1,12 +1,16 @@
 package testCase;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import pageObjects.HomePage;
 import pageObjects.LoginPage;
+import utilities.ScreenshotHelper;
 import utilities.Utility;
 import utilities.WaitHelper;
 
@@ -16,29 +20,16 @@ public class HomeTest {
 	HomePage homeobj;
 	WaitHelper waitobj;
 	LoginPage loginobj;
+	ScreenshotHelper scrobj;
 
-	@BeforeTest
-	public void beforeTest() {
+	@BeforeClass
+	public void beforeClass()
+	{
 		utilobj = new Utility();
-		driver = utilobj.LaunchBrowser("chrome", "http://buffalocart.com/demo/erp/login");
+		driver = BaseClass.getDriver();
 	}
-
-	@Test
-	public void CorrectUnameCorrectPwd() throws InterruptedException {
-		Thread.sleep(3000);
-		loginobj = new LoginPage(driver);
-		utilobj.textboxValueEnter(loginobj.username, "admin");
-		utilobj.textboxValueEnter(loginobj.password, "123456");
-		utilobj.click(loginobj.signin);
-		Thread.sleep(5000);
-		if (driver.getTitle().equals("Codecarrots")) {
-			Assert.assertTrue(true);
-		} else {
-			Assert.assertTrue(false);
-		}
-	}
-
-	@Test(priority = 1, enabled = true) // // TESTCASE NUMBER = 7
+	 
+	@Test(priority = 1, enabled = true)  // TESTCASE NUMBER = 7
 	public void verifyHomeUrl() {
 		homeobj = new HomePage(driver);
 		String urlfromsite = utilobj.getUrl(driver);
@@ -47,11 +38,18 @@ public class HomeTest {
 	}
 
 	@Test(priority = 2, enabled = true) // TESTCASE NUMBER = 8
-	public void verifyHomeTitle() {
+	public void verifyHomeTitle() throws IOException {
 		homeobj = new HomePage(driver);
+		scrobj = new ScreenshotHelper();
 		String Titlefromsite = utilobj.getTitle(driver);
-		String title = "Codecarrots";
-		Assert.assertEquals(title, Titlefromsite, "Home Title verification=sucess");
+		String title = "Codecarrotss";
+		//Assert.assertEquals(title, Titlefromsite, "Home Title verification=sucess");
+		if (Titlefromsite.equals(title)) {
+			Assert.assertTrue(true);
+		} else {
+			scrobj.screenshot(driver, "HomeTitleTest");
+			Assert.assertTrue(false);
+		}
 	}
 
 	@Test(priority = 3, enabled = true) // TESTCASE NUMBER = 9
@@ -62,11 +60,18 @@ public class HomeTest {
 	}
 
 	@Test(priority = 4, enabled = true) // TESTCASE NUMBER = 10
-	public void verifyUserLoggedin() {
+	public void verifyUserLoggedin() throws IOException {
 		homeobj = new HomePage(driver);
+		scrobj = new ScreenshotHelper();
 		String Titlefromsite = utilobj.getText(homeobj.accountname);
-		String title = "demo";
-		Assert.assertEquals(title, Titlefromsite, "Home Title verification=sucess");
+		String title = "demos";
+		//Assert.assertEquals(title, Titlefromsite, "Home Title verification=sucess");
+		if (Titlefromsite.equals(title)) {
+			Assert.assertTrue(true);
+		} else {
+			scrobj.screenshot(driver, "UserLoggedinTest");
+			Assert.assertTrue(false);
+		}
 	}
 
 }

@@ -40,24 +40,11 @@ public class TasksTest {
 		return Taskname;
 	}
 
-	@BeforeTest
-	public void beforeTest() throws InterruptedException {
+	@BeforeClass
+	public void beforeClass()
+	{
 		utilobj = new Utility();
-		driver = utilobj.LaunchBrowser("chrome", "http://buffalocart.com/demo/erp/login");
-	}
-	@Test
-	public void CorrectUnameCorrectPwd() throws InterruptedException {
-		Thread.sleep(3000);
-		loginobj = new LoginPage(driver);
-		utilobj.textboxValueEnter(loginobj.username, "admin");
-		utilobj.textboxValueEnter(loginobj.password, "123456");
-		utilobj.click(loginobj.signin);
-		Thread.sleep(5000);
-		if (driver.getTitle().equals("Codecarrots")) {
-			Assert.assertTrue(true);
-		} else {
-			Assert.assertTrue(false);
-		}
+		driver = BaseClass.getDriver();
 	}
 	@Test(priority = 1,enabled=true) // TESTCASE NUMBER = 13
 	public void tasksmenucheck() {
@@ -136,7 +123,7 @@ public class TasksTest {
 	  boolean verifystatus = driver.getPageSource().contains("Change Status");
 	  Assert.assertTrue(verifystatus);
   }
-  @Test(priority=5, enabled=true) // TESTCASE NUMBER = 17
+  @Test(priority=5, enabled=false) // TESTCASE NUMBER = 17
   public void delete() 
   {
 	  alertobj = new AlertHelper();
@@ -147,7 +134,7 @@ public class TasksTest {
 	  Assert.assertTrue(verifydelete);
   }
   
- @Test(priority=6,enabled=false) // TESTCASE NUMBER = 18
+ @Test(priority=6,enabled=true) // TESTCASE NUMBER = 18
  public void fileDownload() 
  {
 	 
@@ -171,7 +158,7 @@ public class TasksTest {
 		 System.out.println("File not found");
 	 
  }
- @Test(priority=7,enabled=false) // TESTCASE NUMBER = 19
+ @Test(priority=7,enabled=true) // TESTCASE NUMBER = 19
  public void fileUpload() 
  {
 	 utilobj.click(tasksobj.importtask);

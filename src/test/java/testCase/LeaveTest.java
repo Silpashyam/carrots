@@ -3,6 +3,7 @@ package testCase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -24,24 +25,11 @@ public class LeaveTest {
 	SelectHelper selectobj;
 	WaitHelper waitobj;
 
-	@BeforeTest
-	public void beforeTest() throws InterruptedException {
+	@BeforeClass
+	public void beforeClass()
+	{
 		utilobj = new Utility();
-		driver = utilobj.LaunchBrowser("chrome", "http://buffalocart.com/demo/erp/login");
-	}
-	@Test
-	public void CorrectUnameCorrectPwd() throws InterruptedException {
-		Thread.sleep(3000);
-		loginobj = new LoginPage(driver);
-		utilobj.textboxValueEnter(loginobj.username, "admin");
-		utilobj.textboxValueEnter(loginobj.password, "123456");
-		utilobj.click(loginobj.signin);
-		Thread.sleep(5000);
-		if (driver.getTitle().equals("Codecarrots")) {
-			Assert.assertTrue(true);
-		} else {
-			Assert.assertTrue(false);
-		}
+		driver = BaseClass.getDriver();
 	}
 	@Test(priority = 1,enabled=true)  // TESTCASE NUMBER = 22
 	public void leavemenucheck()  {
